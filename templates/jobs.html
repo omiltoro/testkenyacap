@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+Alerts | Logged in as Judy Wawira Gichoya  | Logout
+
+<!-- should allow user to create new job, view previous jobs and their status, allow you to change your status-->
+
+<div>
+    <input type="submit" value="Create New Job">
+</div>
+
+<div>
+    <table border="1">
+    <thead> User Activity</thead>
+    <tr>
+        <td>Date</td>
+        <td>JobID</td>
+        <td>JobTitle</td>
+        <td>Status</td>  <!--complete, ongoing, for review , pending -->
+    </tr>
+        <tr>
+        <td>12/12/12</td>
+        <td>1234</td>
+        <td> Test App </td>
+        <td>Complete</td>
+    </tr>
+    <tr>
+        <td>01/07/2013</td>
+        <td>353246</td>
+        <td> Karurumo High School </td>
+        <td>Ongoing</td>
+    </tr>
+           <tr>
+        <td>01/07/2013</td>
+        <td>353246</td>
+        <td> Karurumo High School </td>
+        <td>Ongoing</td>
+    </tr>
+           <tr>
+        <td>01/07/2013</td>
+        <td>353246</td>
+        <td> Karurumo High School </td>
+        <td>Ongoing</td>
+    </tr>
+           <tr>
+        <td>01/07/2013</td>
+        <td>353246</td>
+        <td> Karurumo High School </td>
+        <td>Ongoing</td>
+    </tr>
+</table>
+</div>
+
+<h1>Your Jobs</h1>
+
+<ul>
+    {%  for job in object_list  %}
+    <li class = 'job'>{{ job }}</li>
+    {% endfor %}
+</ul>
+
+
+</body>
+</html>

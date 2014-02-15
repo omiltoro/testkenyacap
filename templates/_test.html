@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+{% block title %} Select Job Details {% endblock %}
+
+{% block body_block %}
+
+    <div class="hero-unit">
+
+        <div class="container-fluid">
+            <form class="form-signin span4" id="server_setup" method="post" action="/createjob/">
+                {% csrf_token %}
+                {{ form }}
+                <br/>
+                <button class="btn btn-primary" type="submit"> Create Job</button>
+                <button class="btn btn-default" type="cancel"> Cancel</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+
+{% block title %} Select Job Server {% endblock %}
+
+{% block body_block %}
+
+    <div class="hero-unit">
+
+        <div class="container-fluid">
+            <form class="form-signin span6" method="post" name="form_server" id="form_server">
+                {% csrf_token %}
+                {% if latest_server_list %}
+                    <p> Please select server to create shredder job </p>
+                    {% for server  in latest_server_list %}
+                          <a href="/_test/?server_url={{server}}">{{ server }}</a> <br/>
+                    {% endfor %}
+                {% else %}
+                    <p> No servers found</p>
+                    <a href="/setup/">Create new server </a>
+                {% endif %}
+
+            </form>
+
+            <form id="server_setup" class="form-signin span4" id="server_setup" method="post" action="/server_form/">
+                {% csrf_token %}
+                <p>OR</p>
+                <button class="btn-primary" type="submit">Add new Server</button>
+
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+

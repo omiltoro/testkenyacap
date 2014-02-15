@@ -1,0 +1,19 @@
+{% block body_block %}
+<div class="hero-unit">
+
+<form id="serverparams_form"  method="post">
+    {%  if userjobsettings_list %}
+         {%  for jobsetting  in userjobsettings_list %}
+             <a href="serverdetails" class="server">{{ jobsetting.serverAddress }}</a>
+             <input type="hidden" value= {{ jobsetting.serverUsername }} >
+             <input type="hidden" value= {{ jobsetting.serverPassword }}>
+             <br/>
+        {% endfor %}
+
+    {%  else %}
+        <p> No Updated Server Settings found. Please configure server at <a href="/setup">setup</a> </p>
+    {%  endif %}
+</form>
+    </div>
+
+{% endblock %}

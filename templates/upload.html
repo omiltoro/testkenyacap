@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block title %} Upload File {% endblock %}
+
+{% block body_block %}
+    <div class="hero-unit">
+        <div class="container-fluid">
+
+            {% if documents %}
+                <h3> Previously Uploaded Documents</h3>
+                <ul>
+                    {% for document in documents %}
+                        <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h3>No documents uploaded.</h3>
+            {% endif %}
+
+            <!-- Upload form. Note enctype attribute! -->
+            <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h6>{{ form.docfile.help_text }}</h6>
+                <button class="btn btn-primary" > {{ form.docfile }} </button>{{ form.docfile.errors }}
+            </p>
+
+                <button class="btn btn-primary" type="submit"> Upload File </button>
+                <button class="btn btn-default" type="cancel"> Cancel </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

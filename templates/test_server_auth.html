@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+{% block title %} Select Job Server {% endblock %}
+
+{% block body_block %}
+
+    <div class="hero-unit">
+
+        <div class="container-fluid">
+            <form class="form-signin span4" id="server_setup" method="post" action="/server_details/">
+        {{ form.as_p }}
+
+            </form>
+
+        </div>
+
+
+        </div>
+
+{% endblock %}

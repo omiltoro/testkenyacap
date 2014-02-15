@@ -1,0 +1,27 @@
+
+{% extends "index.html" %}
+
+{% block title %} server setup wizard {% endblock %}
+
+{% block body_block %}
+    <div class="hero-unit">
+
+        <h3>Server setup wizard</h3>
+        <div class="container">
+
+            <form method="post" action="" class="form-signin span4">
+                {% csrf_token %}
+                {{ serverDetails }}
+
+                <button class="btn btn-primary" type="submit"> Save Server Details </button>
+                <button class="btn btn-default" type="submit"> Test Connection </button>
+                <button class="btn btn-default" type="cancel"> Cancel </button>
+            </form>
+        </div>
+
+        {% if errors %}
+            <p>{{ form.fieldname.errors.as_text }}</p>
+        {% endif %}
+
+    </div>
+{% endblock %}

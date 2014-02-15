@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+
+{% block title %} display server form  {% endblock %}
+
+{% block body_block %}
+    <div class="hero-unit">
+
+        <h3>Server setup wizard</h3>
+
+        <div class="container">
+            <form class="form-signin span4" id="server_setup" method="post" action="/setup/">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-primary" type="submit"> Save Server Details</button>
+                <button class="btn btn-default" type="submit" onclick="ping()"> Test Connection</button>
+                <button class="btn btn-default" type="cancel"> Cancel</button>
+
+            </form>
+            <ul data-bind="foreach:servers">
+    <li> <a href="#" data-bind="text:name,attr:{href: 'http://'+name}">test connection status:</a> <span data-bind="text:status,css:status"></span>
+
+    </li>
+</ul>
+
+              </div>
+    </div>
+{% endblock %}

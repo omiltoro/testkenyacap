@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+
+{% block title %} User Profile {% endblock %}
+
+{% block body_block %}
+
+    <div class="hero-unit">
+
+        <!-- should allow user to create new job, view previous jobs and their status, allow you to change your status-->
+        <div class="container-fluid">
+
+            <form id="newjob_form" class="span6" method="post" action="/server/">
+                <!--should take you to new job wizard creation previosuly jobserversettings-->
+                {% csrf_token %}
+                <button class="btn btn-primary" type="submit" name="submit">Create New Job</button>
+
+
+                <h3> Job Activity</h3>
+
+                {% if jobs_list %}
+
+                        <table class="table table-hover">
+
+                            <tr>
+                                <td>Job ID</td>
+                                <td>Job Name</td>
+                                <td>Date Created</td>
+                                <!--complete, ongoing, for review , pending -->
+                            </tr>
+                             {% for job  in jobs_list %}
+                            <tr>
+                                <td>{{ job.idJobs }} </td>
+                                <td>{{ job.jobName }} </td>
+                                <td>{{ job.dateCreated }} </td>
+                            </tr>
+                        {% endfor %}
+                        </table>
+
+                {% else %}
+                    <p> You have no jobs on file. </p>
+                {% endif %}
+            </form>
+
+          <form id="server_setup" class="form-signin span4" id="send_captricity" method="post" action="">
+                {% csrf_token %}
+                <button class="btn-primary" type="submit">Send to Captricity</button>
+
+            </form>
+
+
+            {% if errors %}
+                <p>{{ form.fieldname.errors.as_text }}</p>
+            {% endif %}
+
+            <br>
+            <br>
+
+        </div>
+
+
+    </div>
+{% endblock %}
+
+
